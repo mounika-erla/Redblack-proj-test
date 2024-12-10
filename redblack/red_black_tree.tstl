@@ -1,0 +1,39 @@
+# Import the RedBlackTree class
+from red_black_tree import RedBlackTree
+
+# Define variables
+x = new int
+tree = new RedBlackTree
+
+# Actions to test the RedBlackTree
+
+# Initialize a new RedBlackTree
+START tree := RedBlackTree()
+
+# Insert a value into the tree
+tree.insert(x)
+
+# Delete a value from the tree
+tree.delete(x)
+
+# Search for a value in the tree
+res := tree.search(x)
+
+# Perform an inorder traversal
+tree.inorder()
+
+# Properties to test invariants (postconditions)
+
+# Property: The root node is always black
+PROPERTY tree.root.color == "black"
+
+# Property: Inorder traversal outputs a sorted sequence
+inorder_list = new list
+inorder_list := []
+tree.inorder()
+for i in inorder_list:
+    ASSERT i <= next(inorder_list)
+
+# Property: If a value is deleted, it cannot be found in the tree
+tree.delete(x)
+ASSERT tree.search(x) is None
